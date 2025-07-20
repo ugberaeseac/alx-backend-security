@@ -7,7 +7,6 @@ import requests
 from datetime import datetime
 from .models import RequestLog, BlockedIP
 from django.core.cache import cache
-from django_ip_geolocation.utils import get_geoip_data
 from django.http import HttpResponseForbidden
 from functools import wraps
 
@@ -42,7 +41,7 @@ class IPLoggingMiddleware():
         if not geo_data:
             try:
                 response = requests.get(url, timeout=3)
-                if response.status = 200:
+                if response.status == 200:
                     geo_info = response.json()
                     cache.set(key, geo_info, 3600 * 24)
             except Exception as err:

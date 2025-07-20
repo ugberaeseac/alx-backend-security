@@ -13,3 +13,14 @@ class RequestLog(models.Model):
 
     def __str__(self):
         return f'{self.ip_address} - {self.path} - {self.timestamp}'
+
+
+
+class BlockedIP(models.Model):
+    """ models for blocked ips"""
+
+    ip_address = models.CharField(max_length=45)
+
+
+    def __str__(self):
+        return f'Blocked IP: {self.ip_address}'

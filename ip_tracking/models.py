@@ -25,3 +25,12 @@ class BlockedIP(models.Model):
 
     def __str__(self):
         return f'Blocked IP: {self.ip_address}'
+
+
+class SuspiciousIP(models.Model):
+    """ model to save/log suspicious ips """
+    ip_address = models.CharField(max_length=45)
+    reason = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.ip_address
